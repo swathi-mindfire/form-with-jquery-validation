@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrationn form</title>
+
+    <style>
+        #form1{
+          
+            width:400px;
+            height:400px;
+            background-color:tomato;
+            padding:20px;
+            margin: auto;
+            padding-top:100px;
+            padding-left: 70px;
+            box-sizing: border-box;
+          
+        }
+        #next1{
+            position:relative;
+            left:200px;
+        }
+        #sub{
+            position:relative;
+            left:200px;
+        }
+
+        input{
+            margin-left:20px;
+        }
+        #grp2{
+            display: none;
+
+        }
+        #grp1{
+            position:absolute;
+            top:150px;
+            left:40%;
+        }
+        #grp2{
+            position:absolute;
+            top:150px;
+            left:40%;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <form action="" id="form1" onsubmit="return validate()">
+
+        <div class="" id="grp1">
+            First Name:<input type="text" id="fn"> <br> <br>
+            Last Name:<input type="text"id="sn"> <br><br>
+
+            <button type="button" onclick="next()" id="next1">Next</button> <br><br>
+        </div>
+        <div class="" id="grp2">
+            Password:<input type="password" id="p1"> <br><br>
+            Confirm:<input type="password" id="p2"> <br><br>
+            <button type="button" onclick="prev()" id="prev1">Prev</button>
+            <button type="submit" id="sub">Submit</button>
+
+        </div>
+       
+    </form>
+
+    <script>
+        function next(){
+            var grp1 = document.getElementById("grp1")
+            grp1.style.display="none";
+            var grp2 = document.getElementById("grp2")
+            grp2.style.display="block"
+
+        }
+        function prev(){
+            var grp2 = document.getElementById("grp2")
+            grp2.style.display="none"
+        
+            var grp1 = document.getElementById("grp1")
+            grp1.style.display="block";
+           
+
+        }
+
+        function validate(){
+            var name1 = document.getElementById('fn')
+            var name2 = document.getElementById('sn')
+            var pwd1 = document.getElementById('p1')
+            var pwd2 = document.getElementById('p2')
+
+
+            var temp = name1.value +"\n"+ name2.value +"\n" +pwd1.value +"\n"+ pwd2.value;
+
+            alert(temp)
+            return true;
+
+        }
+    </script>
+    
+</body>
+</html>
