@@ -1,6 +1,6 @@
 @media (min-width:766px){
-    #mail1{
-        width:460px !important;
+    #email{
+        width:470px !important;
     }
     #subscribe{
         position: relative;
@@ -94,7 +94,7 @@ body{
 }
 
 .sub-grp{
-    margin-bottom:20px;
+    margin-bottom:40px;
 }
 #mobile2{
     position: relative !important;
@@ -110,7 +110,7 @@ body{
    
 }
 
-#grp2{
+#grp1{
     display: none;
 }
 .form-select{
@@ -153,8 +153,17 @@ body{
    
 }
 #extra1{
-    height:20px;
+    height:60px;
 }
+
+#next{
+    margin-top: 20px;
+}
+#signin{
+    margin-top: 20px;
+}
+
+
 
 input:focus::placeholder{
     color:transparent;

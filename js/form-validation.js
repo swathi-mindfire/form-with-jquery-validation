@@ -1,84 +1,362 @@
-/*var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
-      
-       var country = document.getElementById("country1");
-      
-       country.options[0] = new Option('select Country', '0');
-       country.selectedIndex = 0;
-
-       for(var i=0; i< countries.length; i++){
-           country.options[i+1] = new Option(countries[i],countries[i]);
-       }
-      
-
-      /* $('input').blur(function(e){
-           alert("please enter " + $(this).attr('id') + "  value")
-       })*/
-
-       /*
-
-       var country = $("#country2");
-
-       alert(country == null)
-      
-       country.options[0] = new Option('select Country', '0');
-       country.selectedIndex = 0;
-
-       for(var i=0; i< countries.length; i++){
-           country.options[i+1] = new Option(countries[i],countries[i]);
-       }
-       */
-/*
-       
-$(document).ready(function(){
-    var generateCountries = (function(){
-        var country = $("#country2");
-        country.options[0] = new Option('select Country', '0');
-        country.selectedIndex = 0;
- 
-        for(var i=0; i< countries.length; i++){
-            country.options[i+1] = new Option(countries[i],countries[i]);
-        }
-
-
-
-
-    })();
-})*/
-
 $(document).ready(function(){
     var validation = (function(){
-        let fname,lname,mail1,mobile1,pwd1,pwd2,gender,addr1,countyr1,state1,city1,grp1,grp2,next,
-        prev,signup;
-       
-
-         next =  $("#next");
-         grp2 =  $("#grp2");
-         grp1 =  $("#grp1");
-       
-
-        function showGrp2(){
-            //alert("hello")
-            $('#grp1').fadeOut(3000,function(){
-            $('#grp2').fadeIn()
-
-            })
-        }
-
+        var next =  $("#next");
+        var grp2 =  $("#grp2");
+        var grp1 =  $("#grp1");
+        var prev  = $("#prev");
+        //checking empty input fields 
         function noValueError(pos){
-            
-           
+            var pos1 = "#" + pos ;
+            var pos2 = "#" + pos+ "error";
+            if($(pos1).val().trim() == ""){
+                if(pos == "pwd2"){
+                    $(pos2).text("please confirm Password" );
+                    //$(pos1).focus();
+                }
+                else{
+                    $(pos2).text("please enter " + pos );
+                    //$(pos1).focus();
+                }
+            }
+        }
+        //First group  validation,if it success then only  next page opens
 
-            let pos2 = "#" + pos+ "error"
-            
+        function checkGrp1(){
+            var fname = $("#firstname");            
+            var lname = $("#lastname");               
+            var mail1 =$("#email");        
+            var pwd1 = $("#password");
+            var pwd2 = $("#pwd2");
+            var mobile = $("#mobilenumber");
+            var fnerror = $("#firstnameerror");            
+            var lnerror = $("#lastnameerror");               
+            var mlerror =$("#emailerror");        
+            var p1error = $("#passworderror");
+            var p2error = $("#pwd2error");
+            var m1error = $("#mobilenumbererror");
+            var namereg = /^[a-zA-Z]+$/;
+            var mailreg = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+)\.([a-zA-Z]{2,7})(.[a-z]{2,7})?$/;
+            var mobilereg = /^[1-9]{1}[0-9]{9}$/;
+            var pwdreg = /^([!,.+-{}()[]~`%#:;]+)$/;
+            var fnflag,lnflag,mlflag,m1flag,p1flag,p2flag,genflag;
+            fnflag = lnflag = mlflag = m1flag = p1flag = p2flag = genflag= true;
 
-            $(pos2).text("please enter " + pos );
+             var namecheck = (function(){
+                 //First name validation
+                 function fnamechk(){
+                    if((fname.val()).trim() == ""){
+                        
+                          fnerror.text("please enter first name");
+                          fnflag = false;
+                          fname.focus();
+                          fname.change(function() {
+                          fnerror.text(" ");
+                        });           
+                    }
+                    else{
+                        if ((fname.val()).length <3 ){
+                            fnflag = false;
+                           
             
+                            fnerror.text("Name is minimun 3 characters");
+                            
+                            fname.focus();
+                            fname.change(function() {
+                                fnerror.text(" ");
+                            });
+                        }
+                        else if (!(fname.val()).match(namereg)){  
+                            fnflag = false;
+                                     
+                            fnerror.text("special characters not allowed")
+                            fname.focus();
+                            fname.change(function() {
+                            fnerror.text(" ");
+                            });                                
+                        }
+                    }
+                }
+                //Last Name Validation
+                function lnamechk(){
+                    if((lname.val()).trim() == ""){
+                        lnflag = false;
+                        lnerror.text("please enter last name");
+                        lname.focus();
+                        lname.change(function() {
+                            lnerror.text(" ");
+                        });           
+                    }
+                    else{
+                        if ((lname.val()).length<3 ){
+                            lnflag = false;
+            
+                            lnerror.text("Name is minimun 3 characters");
+                            lname.focus();
+                            lname.change(function() {
+                                lnerror.text(" ");
+                            });
+                        }
+                        else if (!(lname.val()).match(namereg)){
+                            lnflag = false;             
+                            lnerror.text("special characters not allowed")
+                            lname.focus();
+                            lname.change(function() {
+                                lnerror.text(" ");
+                            });                                
+                        }
+                    }
+                } return {
+                    fnamechk  : fnamechk,
+                    lnamechk  : lnamechk
+
+                }
+            })();
+
+
+            mailchk = (function(){
+                //Email validation
+                function checkemail(){
+                    if((mail1.val()).trim() == ""){
+                        mlflag = false;
+                        mlerror.text("please enter mail id");
+                        mail1.focus();
+                        mail1.change(function() {
+                            mlerror.text(" ");
+                        });           
+                    }           
+                    else if (!(mail1.val()).match(mailreg)){  
+                        mlflag = false;           
+                        mlerro.text("Inavlid mail id,valid format is like sample@gmail.com ")
+                        mail1.focus();
+                        mail1.change(function() {
+                            mlerro.text(" ");
+                        });                                
+                    }
+               }
+               return {
+                    checkemail  : checkemail
+                };
+            })();
+
+            passwordchk = (function(){
+                //password checking 
+               function passwordcheck(){
+                    if((pwd1.val()).trim() == ""){
+                        plflag = false;
+                        p1error.text("Please Enter Password");
+                        pwd1.focus();
+                        pwd1.change(function(){
+                            p1error.text(" ");
+                        })            
+                       }
+                    else{
+                        if((pwd1.val()).length<8){
+                            plflag = false;
+                            p1error.text("Password is minimum 8 characters");
+                            pwd1.focus();
+                            pwd1.change(function(){
+                                p1error.text(" ");
+                            })  
+                        }
+                       /* else{
+                            if((pwd1.val().match(pwdreg))){
+                                plflag = false;
+                                p1error.text("Password contain atleast one special character");
+                                pwd1.focus();
+                                pwd1.change(function(){
+                                    p1error.text(" ");
+                                })  
+                            }
+
+                        }*/  
+
+                    }
+                }
+                //passwords  match checking
+                function passwordMatch(){
+                    if((pwd2.val()).trim() == ""){
+                        p2flag = false;
+                        p2error.text("Please confirm Pasword");
+                        pwd2.focus();
+                        pwd2.change(function(){
+                            p2error.text(" ");
+                        })             
+                       }
+                       else if (!(pwd2.val() === pwd1.val())) {
+                        p2flag = false;
+                        p2error.text("Passwords didn't match");
+                        pwd1.focus();
+                        pwd1.change(function(){
+                            p2error.text(" ");
+                        })  
+                       }
+                    }
+                 return{
+                    passwordcheck : passwordcheck,
+                    passwordMatch : passwordMatch
+                }
+             })();
+
+             mobileNumCheck = (function(){
+                //mobile number validation
+                function checkPhoneNumber(){
+                    if((mobile.val()).trim() == ""){
+                        m1flag = false;
+                        m1error.text("Please Enter Your Mobile Number");
+                        mobile.focus();
+                        mobile.change(function(){
+                            m1error.text(" ");
+                        })  
+                    }            
+                    else if (!(mobile.val()).match(mobilereg)){
+                        m1flag = false;
+                        m1error.text("Enter valid Mobile Number");
+                        mobile.focus();
+                        mobile.change(function(){
+                        m1error.text(" ");
+                    })
+                    }
+                }
+                return {
+                    checkPhoneNumber : checkPhoneNumber
+                };
+
+             })()
+
+            genderSelectionChk = (function(){
+                //checking gender is selected or not
+                function genderCheck(){
+                    var x = $("input[name='gender']:checked").val();
+                    if(x==undefined){
+                         $('#generror').text("please select gender");
+                         genflag= false;
+                     }
+                    else{
+                     $('#generror').text(" ");
+                     genflag = true;
+                    }
+                } return {
+                    genderCheck : genderCheck
+
+                };
+            })();
+
+            var group2show = (function(){
+                //Hiding group1 and showing group 2
+                function showGrp2(){
+                   
+                    grp1.fadeOut(3000,function(){
+                    grp2.fadeIn()
+                    })
+                }
+                function grp1FieldsCompletenessCheck(){
+                    /*if(!(fname.val()== "" || lname.val() == ""  || mail1.val() == "" || pwd1.val() == "" ||
+                    pwd2.val() == "" || mobile.val() == "" ))*/
+                        if(fnflag && lnflag && p1flag && p2flag && mlflag && m1flag && genflag){
+                            showGrp2()
+                            
+
+                    }
+                }
+                return {
+
+                    grp1FieldsCompletenessCheck : grp1FieldsCompletenessCheck
+                };
+            })();
+
+
+            var validatename = namecheck;
+            validatename.fnamechk();
+            validatename.lnamechk();
+            var validatemail = mailchk;
+            validatemail.checkemail();
+            var validatePassword = passwordchk;
+            validatePassword.passwordcheck();
+            validatePassword.passwordMatch();
+            var validatemobile =  mobileNumCheck;
+            validatemobile.checkPhoneNumber();
+            var checkGender = genderSelectionChk;
+            checkGender.genderCheck();
+            var showGrp2 =   group2show ;
+            showGrp2. grp1FieldsCompletenessCheck();
+        }
+        //Group 2 validation
+
+        function generateCountries(){
+            var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
+            var country1 = document.getElementById("country1");
+            var country2 = document.getElementById("country2");
+            country1.options[0] = new Option('select Country', '0');
+            country2.options[0] = new Option('select Country', '0');
+            country1.selectedIndex = 0;
+            country2.selectedIndex = 0;
+            for(var i=0; i< countries.length; i++){
+               country1.options[i+1] = new Option(countries[i],countries[i]);
+               country2.options[i+1] = new Option(countries[i],countries[i]);
+            }
+        }
+        function generateCaptcha(){
+            var expr= $('#exprsn');
+
+            var num1= Math.round((100-10)*Math.random() +10 );
+
+            var num2= Math.round((100-10)*Math.random() + 10);
+
+            var operations = ['*','/','+','-']
+
+            var x= (Math.round(10*Math.random()))%4;
+
+            var op =operations[x];
+
+            var compute = num1 + op  + num2
+
+            expr.val(compute)
+        }
+
+        function getStates(country,state){
+            var states = new Array();
+            states[0] = "slelct state";
+            states[1] = "New South Wales,Queensland,South Australia,Tasmania,Victoria,Western Australia"
+            states[2] = "Alabama,Alaska,California,Colorado,Florida,Georgia, Guam, Hawaii,New Jersey,South Carolina, South Dakota, Tennessee, Texas, U.S. Virgin Islands, Utah, Vermont, Virginia, Washington";
+            states[3] =  "Alberta, British Columbia, Manitoba, New Brunswick,Quebec, Saskatchewan, Yukon";
+            states[4] = "Andhra Pradesh,Arunachal Pradesh,Assam,Bihar,Chhattisgarh,Goa,Gujarat,Haryana,Himachal Pradesh,Jammu and Kashmir,Jharkhand,Karnataka,Kerala,Madhya Pradesh,Maharashtra,Manipur,Meghalaya,Mizoram,Nagaland,Odisha,Punjab,Rajasthan,Sikkim,Tamil Nadu,Telangana,Tripura,Uttar Pradesh,Uttarakhand,West Bengal,Andaman and Nicobar,Chandigarh,Dadra and Nagar Haveli,Daman and Diu,Lakshadweep,Delhi,Puducherry"
+            states[5]  = "Arges,Bacau,Bihor,Bistrita-Nasaud,Botosani,Braila,Brasov,Bucuresti,Buzau,Calarasi";
+            states[6] = "Adygeya,Aginskiy,Buryatskiy,Altay (Gorno-Altaysk),Altayskiy";
+            states[7] = "Aargau,Ausser-Rhoden,Basel-Landschaft,Basel-Stadt,Bern,Fribourg,Geneve,Glarus,Graubunden"
+            var indx = document.getElementById(country).selectedIndex;
+            var st = document.getElementById(state);
+            var s_arr = states[indx].split(",");
+            st.options[0] = new Option("Select State", "0");
+            var s_arr = states[indx].split(",");
+
+            for(var i=0;i<s_arr.length;i++){
+                st.options[i+1] = new Option(s_arr[i],s_arr[i]);
+            }
 
         }
 
-        return{
-            showGrp2: showGrp2,
-            noValueError :noValueError,
+        function grp2Validate(){
+            cityreg = /^[a-zA-Z]+$/;    
+            addrreg = /^[a-zA-Z0-9,-]+$/;  
+            var caddress = $("#address");
+            var ccountry = $("#country1");
+            var cstate = $("#state1");
+            var city1 = $("#cityname");
+            var pcountry = $("#country2");
+            var cstate = $("#state2");
+
+        }
+        
+
+       return{
+            
+            noValueError       :  noValueError,
+            checkGrp1          :  checkGrp1,
+            generateCountries  :  generateCountries,
+            generateCaptcha    :  generateCaptcha,
+            getStates           :  getStates,
+            grp2Validate       :   grp2Validate,
+            
 
         };
 
@@ -88,13 +366,39 @@ $(document).ready(function(){
       next= $('#next')
     
        next.click(function(){
-          v.showGrp2();
+          v.checkGrp1();
 
       });
 
       $('input').blur(function(e){
-          var pos=$(this).attr('id')
+          var pos=$(this).attr('id');
+
           v.noValueError(pos)
       })
+      v.generateCountries();
+      v.generateCaptcha();
+      $(".refrsh").click(function(){
+        v.generateCaptcha();
+      });
+      $("#country1").change(function(){
+          v.getStates("country1","state1")
+      })
+      $("#country2").change(function(){
+        v.getStates("country2","state2")
+      })
+
+
+
+
+      $('form').submit(function(){
+       
+
+        
+      
+        })
+
+
 
 })
+
+      
