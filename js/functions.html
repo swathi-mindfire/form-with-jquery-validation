@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS functions demo</title>
+</head>
+<body>
+    <h1>In Js we dont have classes  but how we are creating objects means we are creating instance
+
+        to the functions/constructer function not to the classes here.
+    </h1>
+
+    <script>
+
+       // "use strict"
+
+         console.log(document instanceof Document)
+
+         var arr= [10,20,40];
+
+        console.log(typeof(arr));
+
+
+        var arr2 = new Array(12,13,14); //Likeconstructer functions
+
+        console.log(typeof(arr2))
+
+        var obj1=  {'fn':"swathi","sn":"mothukuri"}
+         //creating like this makes obj1 as object literal 
+
+         console.log("obj1 =",obj1)
+
+         //In the above how it is done is we have  object() constructer function to that we are 
+
+         //creating instance
+
+
+         var obj2 = new Object() //using constructer function creating instance to object function
+
+         obj2.fn = "swathi";
+         obj2.sn = "mothukuri";
+
+         console.log("obj2 =",obj2)
+
+         var dt= new Date()
+
+         console.log(typeof(dt))
+
+         function employee(){
+
+
+         }
+         var e1 = new employee()
+
+         console.log(e1)
+
+
+         console.log(e1 instanceof employee)
+
+         //class is a collection of properties and methods not variables and functions
+
+         //In the above employee is a fynction as well as constructer function
+
+         //properties and methods are accessible only through the objects of class/function
+
+         //where as  variables and functions are not accesible accessible by anyone outside
+
+         //of functions but properties are accessible ouside of function for the objects only
+
+         
+
+
+
+         function e2(){
+             this.fn1="mothukuri";//property1
+             this.ln1="swathi";//property2
+
+             var x ="1";//variable
+
+
+             y = 10;
+
+             this.fullname = function(){
+                 return this.fn1 + this.ln1
+             }//method
+
+             var xyz = function(){
+                 return "Hi";// private functions not accesible outside
+             }
+         }
+
+
+         var e2f= new e2()
+
+
+         console.log(e2f.fn1)
+
+         //In the above function variable x is not accessible outside  of the function becuse
+
+         //it is variable not property
+
+
+         console.log(e2f.x) // gives undefined
+
+         console.log(e2f.fullname())
+
+        // console.log(xyz())  gives error because xyz is function not method cannot access outside
+
+        // console.log(e2f.xyz())  also gives error becuuse object can only access methods and properties
+
+         console.log(y)  //here y is global variable even it is declared inside the function
+
+         //but declared with out var/let like y=10 ;
+
+         //but If we use "use strict" in the beginning of code then global variables declared inside
+
+         //the function  also not accessible in strict mode
+
+         var e4 = new e2()
+
+         var e5 = new e2()
+         console.log(e4.fn1)
+
+         console.log(e5.fn1) //in the above e2 function properties are assigned same for all
+
+         //objects we can give different for all using arguments passing to that method
+
+
+         e4.fn1= "ms";//modifying only for e4 object,every object has seperate memory
+
+         console.log(e4.fn1)
+
+         console.log(e5.fn1)
+
+
+         //for each  method  examle
+
+         var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
+        //first argument is  corresponding element ,second arguement is id of element and third is full array
+         countries.forEach(function print(ele,id,arr){
+            alert("hello"+ ele + id +" " + "" +arr.length)
+        })
+
+        var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
+        //first argument is  corresponding element ,second arguement is id of element and third is full array
+         countries.forEach(function (ele,id,arr){
+            alert("hello"+ ele + id +" " + "" +arr.length)
+        })
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -11,46 +11,46 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="heding text-center">Registration Form</h2>
+        <h2 class="heding text-center" title="hello">Registration Form</h2>
         <form action="" class="reg container">
             <!--First Group-->
             <div class="container" id="grp1">
                 <div class="row">
                     <div class="sub-grp col-md-6">
                         <span id= "fnstar" class="star">*</span>
-                        <input type="text" name="fname" placeholder="First Name"id="fname" class="form-control ip left">
-                        <span class= "fnamereq req" id="fnerror">*</span>
+                        <input type="text" name="fname" placeholder="First Name"id="firstname" class="form-control ip left">
+                        <span class= "fnamereq req" id="firstnameerror">*</span>
                     </div>
                     <div class="sub-grp col-md-6">
                         <span id= "lnstar" class="star">*</span>
-                        <input type="text" name="lnmae" id="lname" placeholder="Last Name" class="form-control ip  right">
-                        <span class= "lnamereq req" id="lnerror">*</span>
+                        <input type="text" name="lnmae" id="lastname" placeholder="Last Name" class="form-control ip  right">
+                        <span class= "lnamereq req" id="lastnameerror">*</span>
                     </div>
                 </div>
                 <div class="row mailrow">
                     <div class="sub-grp col-md-12">
                         <span id= "mailstar" class="star">*</span>
-                        <input type="text" name="email" placeholder="Enter Your Email" id="mail1" class="form-control ip"><br>
-                        <span class= "mailreq req" id="mlerror">*</span>
+                        <input type="text" name="email" placeholder="Enter Your Email" id="email" class="form-control ip"><br>
+                        <span class= "mail1req req" id="emailerror">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="sub-grp col-md-6 pass">
                         <span id= "p1star" class="star">*</span>
-                        <input type="password" name="pwd1" placeholder="Password "id="pwd1" class="form-control ip left">
-                        <span class= "pwd1req req" id="p1error">*</span>
+                        <input type="password" name="pwd1" placeholder="Password "id="password" class="form-control ip left">
+                        <span class= "pwd1req req" id="passworderror">*</span>
                     </div>
                     <div class="sub-grp col-md-6 pass">
                         <span id= "p2star" class="star">*</span>
                         <input type="password" name="pwd2" id="pwd2" placeholder="Confirm Password" class="form-control ip  right">
-                        <span class= "ped2req req" id="p2error">*</span>
+                        <span class= "pwd2req req" id="pwd2error">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="sub-grp col-md-6 mob">
                         <span id= "m1star" class="star">*</span>
-                        <input type="tel" name="mobile" placeholder="Mobile Number" id="mobile1" class="form-control ip left"><br>
-                        <span class= "m1req req" id="m1error">*</span>
+                        <input type="tel" name="mobile" placeholder="Mobile Number" id="mobilenumber" class="form-control ip left"><br>
+                        <span class= "mobile1req req" id="mobilenumbererror">*</span>
                     </div>
                     <div class="sub-grp col-md-6 mob">
                         
@@ -61,13 +61,13 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-3 "><span id= "genstar" class="star">*</span>    Gender</div>
                     <div class="col-md-2">
-                        <input type="radio" name="gender" id="radio1"><span class="gen radio-text"></span> Male</span>
+                        <input type="radio" name="gender" id="radio1"class="gender"><span class="gen radio-text"></span> Male</span>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="gender"id="radio2"><span class="gen radio-text"> Female</span>
+                        <input type="radio" name="gender"id="radio2"class="gender"><span class="gen radio-text"> Female</span>
                     </div>
                     <div class="col-md-3">
-                        <input type="radio" name="gender" id="radio3"> <span class="gen radio-text"> other</span><br>
+                        <input type="radio" name="gender" id="radio3"class="gender"> <span class="gen radio-text"> other</span><br>
                     </div>
                     <span class= "genreq req" id="generror">*</span>
                 </div>
@@ -83,15 +83,15 @@
                 <div class="row">
                     <div class="col-md-6 sub-grp" id="address1">
                         <span id= "a1star" class="star">*</span>
-                        <input type="text" name="caddress" placeholder="Current Address "id="addr1" class="form-control ip left">
-                        <span class= "a1req req" id="a1error">*</span>
+                        <input type="text" name="caddress" placeholder="Current Address "id="address" class="form-control ip left">
+                        <span class= "a1req req" id="addresserror">*</span>
                     </div>
                     <div class="col-md-6 sub-grp">
                         <span id= "countrystar" class="star">*</span>
                         <select name="country-list" class="form-select ip" id="country1">
                             <option value="0">Select Country</option>
                         </select>
-                        <span class= "country1req req" id="c1error">*</span>
+                        <span class= "country1req req" id="country1error">*</span>
                     </div>
                 </div>
                 <div class="row">
@@ -100,12 +100,12 @@
                         <select id="state" class="form-select ip" id="state1">
                             <option value="0">Select State</option>
                         </select>
-                        <span class= "state1req req" id="s1error">*</span>
+                        <span class= "state1req req" id="state1error">*</span>
                     </div>
                     <div class="col col-md-6 city1">
                         <span id= "c1star" class="star">*</span>
-                        <input type="text" name="city1" placeholder="Current City "id="city1" class="form-control ip right">
-                        <span class= "c1req req" id="cterror">*</span>
+                        <input type="text" name="city1" placeholder="Current City "id="cityname" class="form-control ip right">
+                        <span class= "c1req req" id="citynameerror">*</span>
                     </div>
                 </div>
                 <div class="row">
@@ -132,7 +132,7 @@
                     <div class=" col-md-6 captcha-res sub-grp">
                         <span id="captcha-star" class="star">*</span> 
                         <input type="text" name="result" id="result" class="form-control ip"  placeholder="Enter captcha Result" > <br>
-                        <span id="errormsg" class="captcha-req req">*</span> 
+                        <span id="resulterror" class="captcha-req req">*</span> 
                     </div>
                     <div class="col-md-6 captcha-expr sub-grp">
                         <input type="text" name="exprsn" id="exprsn" class="optional captcha field ip form-control" readonly>
@@ -149,20 +149,32 @@
                 <div class="row" id="last">
                     <div class="col-md-12 d-flex justify-content-around">
                         <button type="button" class="btn btn-primary" id="prev">Prev</button>
-                        <button type="button" class="btn btn-primary" id="next">Sign Up</button>
+                        <button type="button" class="btn btn-primary" id="signup">Sign Up</button>
                     </div>
                 </div>   
             </div>
         </form>
         <div id="extra1"></div>
-    </div>
-   
-    
-
-    
+    </div>    
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/formValidation.js"></script>
-    
+    <script src="js/form-validation.js"></script>
+
+   <!--<script>
+        var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
+      
+      var country = document.getElementById("country1");
+      
+      
+  
+     
+      country.options[0] = new Option('select Country', '0');
+      country.selectedIndex = 0;
+  
+      for(var i=0; i< countries.length; i++){
+          country.options[i+1] = new Option(countries[i],countries[i]);
+      }
+  
+    </script> -->
 </body>
 </html>

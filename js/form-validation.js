@@ -1,57 +1,100 @@
+/*var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
+      
+       var country = document.getElementById("country1");
+      
+       country.options[0] = new Option('select Country', '0');
+       country.selectedIndex = 0;
+
+       for(var i=0; i< countries.length; i++){
+           country.options[i+1] = new Option(countries[i],countries[i]);
+       }
+      
+
+      /* $('input').blur(function(e){
+           alert("please enter " + $(this).attr('id') + "  value")
+       })*/
+
+       /*
+
+       var country = $("#country2");
+
+       alert(country == null)
+      
+       country.options[0] = new Option('select Country', '0');
+       country.selectedIndex = 0;
+
+       for(var i=0; i< countries.length; i++){
+           country.options[i+1] = new Option(countries[i],countries[i]);
+       }
+       */
+/*
+       
 $(document).ready(function(){
-
-    
-   
-
-   /* var countryList = (function(){
-        var countries = ["Australia","America","Canada","India","Romainia","Russia","Switzerland",]
-        function generateCountries(){
-            var country = $("#country1");
-            alert(country.val())
-           // country.length=0;
-            //country.options[0] = new Option('select Country', '0');
-            country.selectedIndex = 0;
-            for(var i=0; i< countries.length;i++){
+    var generateCountries = (function(){
+        var country = $("#country2");
+        country.options[0] = new Option('select Country', '0');
+        country.selectedIndex = 0;
+ 
+        for(var i=0; i< countries.length; i++){
             country.options[i+1] = new Option(countries[i],countries[i]);
-            }
         }
-        return {generateCountries:generateCountries};
+
+
+
+
     })();
+})*/
 
-
-    alert(countryList)
-    var countryl = countryList();
-    countryl.generateCountries(); */
-
-   
-
-  
-
-
-
-    /*var validate = function(){
-
+$(document).ready(function(){
+    var validation = (function(){
+        let fname,lname,mail1,mobile1,pwd1,pwd2,gender,addr1,countyr1,state1,city1,grp1,grp2,next,
+        prev,signup;
        
 
-        function formfields(){
-           alert("hi")
-            
+         next =  $("#next");
+         grp2 =  $("#grp2");
+         grp1 =  $("#grp1");
+       
+
+        function showGrp2(){
+            //alert("hello")
+            $('#grp1').fadeOut(3000,function(){
+            $('#grp2').fadeIn()
+
+            })
         }
-        return {formfields:formfields}
-    }
-    var v1 = validate();
-    v1.formfields();*/
 
-   
+        function noValueError(pos){
+            
+           
 
-   
+            let pos2 = "#" + pos+ "error"
+            
+
+            $(pos2).text("please enter " + pos );
+            
+
+        }
+
+        return{
+            showGrp2: showGrp2,
+            noValueError :noValueError,
+
+        };
+
+      })();
+
+      var v = validation;
+      next= $('#next')
     
+       next.click(function(){
+          v.showGrp2();
+
+      });
+
+      $('input').blur(function(e){
+          var pos=$(this).attr('id')
+          v.noValueError(pos)
+      })
 
 })
-
-/*grp1 = function(){
-
-    let 
-
-
-}*/
