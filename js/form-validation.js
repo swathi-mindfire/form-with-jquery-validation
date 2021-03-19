@@ -489,13 +489,13 @@ $(document).ready(function(){
         }
         return{
             
-            noValueError         :  noValueError,
-            checkGrp1            :  checkGrp1,
-            generateCountries    :  generateCountries,
-            generateCaptcha      :  generateCaptcha,
-            getStates            :  getStates,
-            grp2Validate         :  grp2Validate,
-            showGrp1             :  showGrp1,
+            noValueError          :  noValueError,
+            checkGrp1             :  checkGrp1,
+            generateCountries     :  generateCountries,
+            generateCaptcha       :  generateCaptcha,
+            getStates             :  getStates,
+            grp2Validate          :  grp2Validate,
+            showGrp1              :  showGrp1,
             grp2CompletenessCheck : grp2CompletenessCheck
         };
 
